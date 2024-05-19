@@ -1,6 +1,5 @@
 package com.topic3.android.reddit.screens
 
-package com.topic3.android.reddit.screens
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.height
@@ -21,6 +20,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
+import com.topic3.android.reddit.routing.BackButtonAction
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
@@ -70,6 +70,9 @@ fun ChooseCommunityScreen(viewModel: MainViewModel, modifier: Modifier = Modifie
             )
         )
         SearchedCommunities(communities, viewModel, modifier)
+    }
+    BackButtonAction {
+        RedditRouter.goBack()
     }
 }
 
@@ -122,16 +125,4 @@ fun ChooseCommunityTopBar(modifier: Modifier = Modifier) {
             .height(48.dp)
             .background(Color.Blue)
     )
-}
-
-@Preview
-@Composable
-fun SearchedCommunitiesPreview() {
-    Column {
-        SearchedCommunities(
-            defaultCommunities,
-            null,
-            Modifier
-        )
-    }
 }
